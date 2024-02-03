@@ -37,7 +37,7 @@ export default function Home() {
             priority
           />
           <h1 className="text-4xl my-4 text-center font-bold">
-            კარგიი, მიხარია ❤️
+            მიხარიააა!!! ❤️
           </h1>
         </>
       ) : (
