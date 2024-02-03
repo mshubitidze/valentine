@@ -34,6 +34,7 @@ export default function Home() {
             src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif"
             width={236}
             height={233}
+            priority
           />
           <h1 className="text-4xl my-4 text-center font-bold">
             კარგიი, მიხარია ❤️
@@ -45,6 +46,7 @@ export default function Home() {
             className="h-[200px] w-auto"
             src="https://media1.tenor.com/m/NwB4QhuGUY0AAAAC/lol-amog.gif"
             alt="heart"
+            priority
             width={498}
             height={396}
           />
