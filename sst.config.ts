@@ -10,10 +10,16 @@ export default {
   },
   stacks(app) {
     app.stack(function Site({ stack }) {
-      const site = new NextjsSite(stack, "site");
+      const site = new NextjsSite(stack, "site", {
+        customDomain: {
+          domainName: "valentine.msh.ge",
+          domainAlias: "www.valentine.msh.ge",
+          hostedZone: "msh.ge",
+        },
+      });
 
       stack.addOutputs({
-        SiteUrl: site.url,
+        SiteUrl: site.customDomainUrl || site.url,
       });
     });
   },
