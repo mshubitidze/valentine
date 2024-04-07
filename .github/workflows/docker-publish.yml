@@ -1,0 +1,26 @@
+name: Automatic Workflow
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Get Version Tag
+        run: |
+          VERSION_TAG=$(echo ${{ github.event.head_commit.message }})
+          echo "VERSION_TAG=${VERSION_TAG}" >> $GITHUB_ENV 
+          
+      - name: Login to GitHub Container Registry
+        run: echo ${{ secrets.DOCKERUHUB_SECRET }} | docker login -u ghvinerias --password-stdin
+
+      - name: Build Docker Image
+        run: docker build -t ghvinerias/misho-valentine:$VERSION_TAG .
+
+      - name: Publish Docker Image to GitHub Container Registry
+        run: docker push ghvinerias/misho-valentine:$VERSION_TAG
