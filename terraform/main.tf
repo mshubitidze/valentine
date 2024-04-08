@@ -23,7 +23,7 @@ resource "random_password" "tunnel_secret" {
 }
 resource "cloudflare_tunnel" "auto_tunnel" {
   account_id = var.cloudflare_account_id
-  name       = var.lxc_hostname
+  name       = "misho-valentine"
   secret     = base64sha256(random_password.tunnel_secret.result)
 }
 resource "docker_image" "cloudflared" {
@@ -39,7 +39,7 @@ resource "docker_container" "cloudflared" {
     file       = "/tmp/credentials.yml"
     content    = jsonencode({ "AccountTag" = var.cloudflare_account_id, "TunnelSecret" = base64sha256(random_password.tunnel_secret.result), "TunnelID" = cloudflare_tunnel.auto_tunnel.id })
   }
-  command = ["tunnel", "run", "--credentials-file", "/tmp/credentials.yml", "var.lxc_hostname"]
+  command = ["tunnel", "run", "--credentials-file", "/tmp/credentials.yml", "misho-valentine"]
   networks_advanced {
     name = docker_network.private_network.id
   }
