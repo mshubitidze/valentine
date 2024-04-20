@@ -2,6 +2,8 @@ name: Automatic Docker Image Publish
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
   es-lint:
@@ -21,7 +23,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12
-    - name: yarn install
-      run: yarn install
+    - name: pnpm install
+      run: pnpm install
     - name: tsc
       uses: icrawl/action-tsc@v1
