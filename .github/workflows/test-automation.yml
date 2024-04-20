@@ -4,14 +4,6 @@ on:
   push:
 
 jobs:
-  es-lint:
-    name: Lint ES?
-    runs-on: ubuntu-latest
-    - uses: actions/checkout@v2
-    - name: Install modules
-      run: pnpm
-    - name: Run ESLint
-      run: eslint . --ext .js,.jsx,.ts,.tsx
   tsc:
     name: tsc
     runs-on: ubuntu-latest
