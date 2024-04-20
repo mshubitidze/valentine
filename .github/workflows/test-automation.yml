@@ -2,8 +2,6 @@ name: Automatic Docker Image Publish
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
   es-lint:
@@ -14,8 +12,8 @@ jobs:
       run: pnpm
     - name: Run ESLint
       run: eslint . --ext .js,.jsx,.ts,.tsx
-  typescript:
-    name: TypeScript?
+  tsc:
+    name: tsc
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
