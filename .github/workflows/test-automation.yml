@@ -1,0 +1,27 @@
+name: Automatic Docker Image Publish
+
+on:
+  push:
+
+jobs:
+  es-lint:
+    name: Lint ES?
+    runs-on: ubuntu-latest
+    - uses: actions/checkout@v2
+    - name: Install modules
+      run: pnpm
+    - name: Run ESLint
+      run: eslint . --ext .js,.jsx,.ts,.tsx
+  typescript:
+    name: TypeScript?
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: install node v12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - name: yarn install
+      run: yarn install
+    - name: tsc
+      uses: icrawl/action-tsc@v1
