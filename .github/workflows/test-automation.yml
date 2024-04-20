@@ -7,6 +7,7 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    steps:
     - uses: actions/checkout@v4
 
     - name: Install modules
@@ -15,13 +16,13 @@ jobs:
     - name: Run ESLint
       run: eslint . --ext .js,.jsx,.ts,.tsx
 
-    # - name: install node v12
-    #   uses: actions/setup-node@v1
-    #   with:
-    #     node-version: 12
+    - name: install node v12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
 
-    # - name: pnpm install
-    #   run: pnpm install
+    - name: pnpm install
+      run: pnpm install
 
-    # - name: tsc
-    #   uses: icrawl/action-tsc@v1
+    - name: tsc
+      uses: icrawl/action-tsc@v1
